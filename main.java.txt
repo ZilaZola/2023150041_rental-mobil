@@ -1,0 +1,67 @@
+// Abstract Class
+abstract class Kendaraan {
+    String nomorPolisi;
+    String merk;
+
+    Kendaraan(String nomorPolisi, String merk) {
+        this.nomorPolisi = nomorPolisi;
+        this.merk = merk;
+    }
+
+    abstract void infoKendaraan();
+}
+
+// Inheritance
+class Mobil extends Kendaraan {
+    Mobil(String nomorPolisi, String merk) {
+        super(nomorPolisi, merk);
+    }
+
+    @Override
+    void infoKendaraan() {
+        System.out.println("Mobil: " + merk + ", Plat: " + nomorPolisi);
+    }
+}
+
+// Interface
+interface Person {
+    String getNama();
+}
+
+// Implements Interface
+class Supir implements Person {
+    String NIP;
+    String nama;
+
+    Supir(String NIP, String nama) {
+        this.NIP = NIP;
+        this.nama = nama;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+}
+
+// Rental Class
+class Rental {
+    Mobil mobil;
+    Supir supir;
+    boolean statusDipinjam;
+
+    Rental(Mobil mobil, Supir supir) {
+        this.mobil = mobil;
+        this.supir = supir;
+        this.statusDipinjam = false;
+    }
+
+    void dipinjam() {
+        statusDipinjam = true;
+        System.out.println("Mobil dipinjam oleh " + supir.getNama());
+    }
+
+    void dikembalikan() {
+        statusDipinjam = false;
+        System.out.println("Mobil dikembalikan oleh " + supir.getNama());
+    }
+}
